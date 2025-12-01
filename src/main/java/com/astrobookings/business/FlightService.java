@@ -3,25 +3,25 @@ package com.astrobookings.business;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.astrobookings.persistence.implementation.InMemoryFlightRepository;
+import com.astrobookings.persistence.FlightRepository;
 import com.astrobookings.persistence.RocketRepository;
 import com.astrobookings.persistence.models.Flight;
 import com.astrobookings.persistence.models.FlightStatus;
 
 public class FlightService {
-  private final InMemoryFlightRepository inMemoryFlightRepository;
+  private final FlightRepository flightRepository;
   private final RocketRepository rocketRepository;
 
-  public FlightService(InMemoryFlightRepository inMemoryFlightRepository, RocketRepository rocketRepository) {
-    this.inMemoryFlightRepository = inMemoryFlightRepository;
+  public FlightService(FlightRepository flightRepository, RocketRepository rocketRepository) {
+    this.flightRepository = flightRepository;
     this.rocketRepository = rocketRepository;
   }
 
   public List<Flight> getFlights(String statusFilter) {
     if (statusFilter != null && !statusFilter.isEmpty()) {
-      return inMemoryFlightRepository.findByStatus(statusFilter);
+      return flightRepository.findByStatus(statusFilter);
     } else {
-      return inMemoryFlightRepository.findAll();
+      return flightRepository.findAll();
     }
   }
 
@@ -37,7 +37,7 @@ public class FlightService {
     }
 
     // Save
-    return inMemoryFlightRepository.save(flight);
+    return flightRepository.save(flight);
   }
 
   private String validateFlight(Flight flight) {

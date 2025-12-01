@@ -9,7 +9,7 @@ import java.util.Map;
 
 import com.astrobookings.business.BookingService;
 import com.astrobookings.persistence.BookingRepository;
-import com.astrobookings.persistence.implementation.InMemoryFlightRepository;
+import com.astrobookings.persistence.FlightRepository;
 import com.astrobookings.persistence.RepositoryFactory;
 import com.astrobookings.persistence.RocketRepository;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -20,9 +20,9 @@ public class BookingHandler extends BaseHandler {
 
   public BookingHandler() {
     BookingRepository bookingRepository = new BookingRepository();
-    InMemoryFlightRepository inMemoryFlightRepository = new InMemoryFlightRepository();
+    FlightRepository flightRepository = RepositoryFactory.createFlightRepository();
     RocketRepository rocketRepository = RepositoryFactory.createRocketRepository();
-    this.bookingService = new BookingService(bookingRepository, inMemoryFlightRepository, rocketRepository);
+    this.bookingService = new BookingService(bookingRepository, flightRepository, rocketRepository);
   }
 
   @Override

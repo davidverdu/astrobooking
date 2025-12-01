@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import com.astrobookings.persistence.BookingRepository;
-import com.astrobookings.persistence.implementation.InMemoryFlightRepository;
+import com.astrobookings.persistence.FlightRepository;
 import com.astrobookings.persistence.RocketRepository;
 import com.astrobookings.persistence.models.Booking;
 import com.astrobookings.persistence.models.Flight;
@@ -15,14 +15,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BookingService {
   private final BookingRepository bookingRepository;
-  private final InMemoryFlightRepository inMemoryFlightRepository;
+  private final FlightRepository flightRepository;
   private final RocketRepository rocketRepository;
   private final ObjectMapper objectMapper = new ObjectMapper();
 
-  public BookingService(BookingRepository bookingRepository, InMemoryFlightRepository inMemoryFlightRepository,
+  public BookingService(BookingRepository bookingRepository, FlightRepository flightRepository,
       RocketRepository rocketRepository) {
     this.bookingRepository = bookingRepository;
-    this.inMemoryFlightRepository = inMemoryFlightRepository;
+    this.flightRepository = flightRepository;
     this.rocketRepository = rocketRepository;
   }
 
@@ -36,7 +36,7 @@ public class BookingService {
     }
 
     // Find flight
-    Flight flight = inMemoryFlightRepository.findAll().stream()
+    Flight flight = flightRepository.findAll().stream()
         .filter(f -> f.getId().equals(flightId))
         .findFirst()
         .orElse(null);
@@ -92,7 +92,7 @@ public class BookingService {
       flight.setStatus(FlightStatus.CONFIRMED);
       NotificationService.notifyConfirmation(flightId, currentBookings);
     }
-    inMemoryFlightRepository.save(flight);
+    flightRepository.save(flight);
 
     // Return JSON (mixing responsibility)
     return objectMapper.writeValueAsString(savedBooking);
