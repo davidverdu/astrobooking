@@ -4,17 +4,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.astrobookings.persistence.FlightRepository;
-import com.astrobookings.persistence.RocketRepository;
+import com.astrobookings.persistence.InMemoryRocketRepository;
 import com.astrobookings.persistence.models.Flight;
 import com.astrobookings.persistence.models.FlightStatus;
 
 public class FlightService {
   private final FlightRepository flightRepository;
-  private final RocketRepository rocketRepository;
+  private final InMemoryRocketRepository inMemoryRocketRepository;
 
-  public FlightService(FlightRepository flightRepository, RocketRepository rocketRepository) {
+  public FlightService(FlightRepository flightRepository, InMemoryRocketRepository inMemoryRocketRepository) {
     this.flightRepository = flightRepository;
-    this.rocketRepository = rocketRepository;
+    this.inMemoryRocketRepository = inMemoryRocketRepository;
   }
 
   public List<Flight> getFlights(String statusFilter) {
@@ -53,7 +53,7 @@ public class FlightService {
     }
 
     // Business validations
-    if (rocketRepository.findAll().stream().noneMatch(r -> r.getId().equals(flight.getRocketId()))) {
+    if (inMemoryRocketRepository.findAll().stream().noneMatch(r -> r.getId().equals(flight.getRocketId()))) {
       return "Rocket with id " + flight.getRocketId() + " does not exist";
     }
 

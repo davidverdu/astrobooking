@@ -1,17 +1,16 @@
 package com.astrobookings.business;
 
-import com.astrobookings.persistence.RocketRepository;
-import com.astrobookings.persistence.models.Rocket;
+import com.astrobookings.persistence.InMemoryRocketRepository;
 
 public class RocketService {
-    private final RocketRepository rocketRepository;
+    private final InMemoryRocketRepository inMemoryRocketRepository;
 
-    public RocketService(RocketRepository rocketRepository) {
-        this.rocketRepository = rocketRepository;
+    public RocketService(InMemoryRocketRepository inMemoryRocketRepository) {
+        this.inMemoryRocketRepository = inMemoryRocketRepository;
     }
 
     public String getRockets() {
-        var rockets = this.rocketRepository.findAll();
+        var rockets = this.inMemoryRocketRepository.findAll();
         return "TODO";
     }
 }

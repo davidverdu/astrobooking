@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import com.astrobookings.persistence.RocketRepository;
+import com.astrobookings.persistence.InMemoryRocketRepository;
 import com.astrobookings.persistence.models.Rocket;
 import com.sun.net.httpserver.HttpExchange;
 
 public class RocketHandler extends BaseHandler {
-  private final RocketRepository rocketRepository = new RocketRepository();
+  private final InMemoryRocketRepository inMemoryRocketRepository = new InMemoryRocketRepository();
 
   @Override
   public void handle(HttpExchange exchange) throws IOException {
@@ -29,7 +29,7 @@ public class RocketHandler extends BaseHandler {
     int statusCode = 200;
 
     try {
-      response = this.objectMapper.writeValueAsString(rocketRepository.findAll());
+      response = this.objectMapper.writeValueAsString(inMemoryRocketRepository.findAll());
     } catch (Exception e) {
       statusCode = 500;
       response = "{\"error\": \"Internal server error\"}";
@@ -54,7 +54,7 @@ public class RocketHandler extends BaseHandler {
         statusCode = 400;
         response = "{\"error\": \"" + error + "\"}";
       } else {
-        Rocket saved = rocketRepository.save(rocket);
+        Rocket saved = inMemoryRocketRepository.save(rocket);
         statusCode = 201;
         response = this.objectMapper.writeValueAsString(saved);
       }
