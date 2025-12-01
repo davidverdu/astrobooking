@@ -10,6 +10,7 @@ import java.util.Map;
 import com.astrobookings.business.BookingService;
 import com.astrobookings.persistence.BookingRepository;
 import com.astrobookings.persistence.FlightRepository;
+import com.astrobookings.persistence.RepositoryFactory;
 import com.astrobookings.persistence.RocketRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.net.httpserver.HttpExchange;
@@ -19,8 +20,8 @@ public class BookingHandler extends BaseHandler {
 
   public BookingHandler() {
     BookingRepository bookingRepository = new BookingRepository();
-    FlightRepository flightRepository = new FlightRepository();
-    RocketRepository rocketRepository = new RocketRepository();
+    FlightRepository flightRepository = RepositoryFactory.createFlightRepository();
+    RocketRepository rocketRepository = RepositoryFactory.createRocketRepository();
     this.bookingService = new BookingService(bookingRepository, flightRepository, rocketRepository);
   }
 
