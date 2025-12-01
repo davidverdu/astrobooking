@@ -5,22 +5,22 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import com.astrobookings.persistence.BookingRepository;
-import com.astrobookings.persistence.FlightRepository;
+import com.astrobookings.persistence.implementation.InMemoryFlightRepository;
 import com.astrobookings.persistence.models.Booking;
 import com.astrobookings.persistence.models.Flight;
 import com.astrobookings.persistence.models.FlightStatus;
 
 public class CancellationService {
-  private final FlightRepository flightRepository;
+  private final InMemoryFlightRepository inMemoryFlightRepository;
   private final BookingRepository bookingRepository;
 
-  public CancellationService(FlightRepository flightRepository, BookingRepository bookingRepository) {
-    this.flightRepository = flightRepository;
+  public CancellationService(InMemoryFlightRepository inMemoryFlightRepository, BookingRepository bookingRepository) {
+    this.inMemoryFlightRepository = inMemoryFlightRepository;
     this.bookingRepository = bookingRepository;
   }
 
   public String cancelFlights() throws Exception {
-    List<Flight> flights = flightRepository.findAll();
+    List<Flight> flights = inMemoryFlightRepository.findAll();
     int cancelledCount = 0;
     LocalDateTime now = LocalDateTime.now();
 
@@ -34,7 +34,7 @@ public class CancellationService {
             System.out.println("[CANCELLATION SERVICE] Cancelling flight " + flight.getId() + " - Only "
                 + bookings.size() + "/5 passengers, departing in " + daysUntilDeparture + " days");
             flight.setStatus(FlightStatus.CANCELLED);
-            flightRepository.save(flight);
+            inMemoryFlightRepository.save(flight);
 
             // Refund bookings
             for (Booking booking : bookings) {

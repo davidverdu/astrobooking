@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.astrobookings.business.FlightService;
-import com.astrobookings.persistence.FlightRepository;
+import com.astrobookings.persistence.implementation.InMemoryFlightRepository;
 import com.astrobookings.persistence.RepositoryFactory;
 import com.astrobookings.persistence.RocketRepository;
 import com.astrobookings.persistence.models.Flight;
@@ -18,9 +18,9 @@ public class FlightHandler extends BaseHandler {
   private final FlightService flightService;
 
   public FlightHandler() {
-    FlightRepository flightRepository = new FlightRepository();
+    InMemoryFlightRepository inMemoryFlightRepository = new InMemoryFlightRepository();
     RocketRepository rocketRepository = RepositoryFactory.createRocketRepository();
-    this.flightService = new FlightService(flightRepository, rocketRepository);
+    this.flightService = new FlightService(inMemoryFlightRepository, rocketRepository);
   }
 
   @Override
