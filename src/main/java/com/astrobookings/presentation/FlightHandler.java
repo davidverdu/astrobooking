@@ -9,7 +9,7 @@ import java.util.Map;
 
 import com.astrobookings.business.FlightService;
 import com.astrobookings.persistence.FlightRepository;
-import com.astrobookings.persistence.InMemoryRocketRepository;
+import com.astrobookings.persistence.implementation.InMemoryRocketRepository;
 import com.astrobookings.persistence.models.Flight;
 import com.sun.net.httpserver.HttpExchange;
 

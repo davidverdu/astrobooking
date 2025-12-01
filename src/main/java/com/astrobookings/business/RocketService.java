@@ -1,6 +1,6 @@
 package com.astrobookings.business;
 
-import com.astrobookings.persistence.InMemoryRocketRepository;
+import com.astrobookings.persistence.implementation.InMemoryRocketRepository;
 
 public class RocketService {
     private final InMemoryRocketRepository inMemoryRocketRepository;

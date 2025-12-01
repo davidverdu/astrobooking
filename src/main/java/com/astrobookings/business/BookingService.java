@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.astrobookings.persistence.BookingRepository;
 import com.astrobookings.persistence.FlightRepository;
-import com.astrobookings.persistence.InMemoryRocketRepository;
+import com.astrobookings.persistence.implementation.InMemoryRocketRepository;
 import com.astrobookings.persistence.models.Booking;
 import com.astrobookings.persistence.models.Flight;
 import com.astrobookings.persistence.models.FlightStatus;
