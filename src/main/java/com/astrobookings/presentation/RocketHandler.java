@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import com.astrobookings.infrastructure.RepositoryFactory;
-import com.astrobookings.domain.ports.RocketRepository;
+import com.astrobookings.domain.ports.output.RocketRepository;
 import com.astrobookings.domain.models.Rocket;
 import com.sun.net.httpserver.HttpExchange;
 

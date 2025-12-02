@@ -1,7 +1,7 @@
 package com.astrobookings.domain;
 
 import com.astrobookings.domain.models.Rocket;
-import com.astrobookings.domain.ports.RocketRepository;
+import com.astrobookings.domain.ports.output.RocketRepository;
 
 import java.util.List;
 

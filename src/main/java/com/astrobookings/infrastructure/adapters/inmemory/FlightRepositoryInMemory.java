@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.astrobookings.domain.ports.FlightRepository;
+import com.astrobookings.domain.ports.output.FlightRepository;
 import com.astrobookings.domain.models.Flight;
 import com.astrobookings.domain.models.FlightStatus;
 
