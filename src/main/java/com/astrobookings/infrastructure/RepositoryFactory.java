@@ -1,20 +1,20 @@
 package com.astrobookings.infrastructure;
 
-import com.astrobookings.domain.ports.BookingRepository;
-import com.astrobookings.domain.ports.FlightRepository;
-import com.astrobookings.domain.ports.RocketRepository;
+import com.astrobookings.domain.ports.BookingRepositoryPort;
+import com.astrobookings.domain.ports.FlightRepositoryPort;
+import com.astrobookings.domain.ports.RocketRepositoryPort;
 import com.astrobookings.infrastructure.implementation.InMemoryBookingRepository;
 import com.astrobookings.infrastructure.implementation.InMemoryFlightRepository;
 import com.astrobookings.infrastructure.implementation.InMemoryRocketRepository;
 
 public class RepositoryFactory {
-    public static RocketRepository createRocketRepository() {
+    public static RocketRepositoryPort createRocketRepository() {
         return new InMemoryRocketRepository();
     }
 
-    public static FlightRepository createFlightRepository() {
+    public static FlightRepositoryPort createFlightRepository() {
         return new InMemoryFlightRepository();
     }
 
-    public static BookingRepository createBookingRepository() { return new InMemoryBookingRepository(); }
+    public static BookingRepositoryPort createBookingRepository() { return new InMemoryBookingRepository(); }
 }

@@ -4,7 +4,7 @@ import com.astrobookings.infrastructure.models.Rocket;
 
 import java.util.List;
 
-public interface RocketRepository {
+public interface RocketRepositoryPort {
     List<Rocket> findAll();
     Rocket save(Rocket rocket);
 }

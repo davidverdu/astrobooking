@@ -4,7 +4,7 @@ import com.astrobookings.infrastructure.models.Booking;
 
 import java.util.List;
 
-public interface BookingRepository {
+public interface BookingRepositoryPort {
     List<Booking> findAll();
     List<Booking> findByFlightId(String flightId);
     List<Booking> findByPassengerName(String passengerName);

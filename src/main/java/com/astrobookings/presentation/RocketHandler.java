@@ -5,12 +5,12 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import com.astrobookings.infrastructure.RepositoryFactory;
-import com.astrobookings.domain.ports.RocketRepository;
+import com.astrobookings.domain.ports.RocketRepositoryPort;
 import com.astrobookings.infrastructure.models.Rocket;
 import com.sun.net.httpserver.HttpExchange;
 
 public class RocketHandler extends BaseHandler {
-  private final RocketRepository rocketRepository = RepositoryFactory.createRocketRepository();
+  private final RocketRepositoryPort rocketRepository = RepositoryFactory.createRocketRepository();
 
   @Override
   public void handle(HttpExchange exchange) throws IOException {
