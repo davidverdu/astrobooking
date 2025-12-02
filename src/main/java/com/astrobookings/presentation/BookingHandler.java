@@ -19,7 +19,7 @@ public class BookingHandler extends BaseHandler {
   private final BookingService bookingService;
 
   public BookingHandler() {
-    BookingRepository bookingRepository = new BookingRepository();
+    BookingRepository bookingRepository = RepositoryFactory.createBookingRepository();
     FlightRepository flightRepository = RepositoryFactory.createFlightRepository();
     RocketRepository rocketRepository = RepositoryFactory.createRocketRepository();
     this.bookingService = new BookingService(bookingRepository, flightRepository, rocketRepository);

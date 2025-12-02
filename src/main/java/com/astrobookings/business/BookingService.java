@@ -20,7 +20,7 @@ public class BookingService {
   private final ObjectMapper objectMapper = new ObjectMapper();
 
   public BookingService(BookingRepository bookingRepository, FlightRepository flightRepository,
-      RocketRepository rocketRepository) {
+                        RocketRepository rocketRepository) {
     this.bookingRepository = bookingRepository;
     this.flightRepository = flightRepository;
     this.rocketRepository = rocketRepository;

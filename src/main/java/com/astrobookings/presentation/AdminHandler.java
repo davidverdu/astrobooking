@@ -13,7 +13,7 @@ public class AdminHandler extends BaseHandler {
 
   public AdminHandler() {
     FlightRepository flightRepository = RepositoryFactory.createFlightRepository();
-    BookingRepository bookingRepository = new BookingRepository();
+    BookingRepository bookingRepository = RepositoryFactory.createBookingRepository();
     this.cancellationService = new CancellationService(flightRepository, bookingRepository);
   }
 
