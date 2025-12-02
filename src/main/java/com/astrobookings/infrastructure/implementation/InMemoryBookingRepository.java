@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.astrobookings.infrastructure.BookingRepository;
+import com.astrobookings.domain.ports.BookingRepository;
 import com.astrobookings.infrastructure.models.Booking;
 
 public class InMemoryBookingRepository implements BookingRepository {

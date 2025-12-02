@@ -1,4 +1,4 @@
-package com.astrobookings.infrastructure;
+package com.astrobookings.domain.ports;
 
 import com.astrobookings.infrastructure.models.Rocket;
 

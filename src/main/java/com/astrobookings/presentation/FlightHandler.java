@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.astrobookings.domain.FlightService;
-import com.astrobookings.infrastructure.FlightRepository;
+import com.astrobookings.domain.ports.FlightRepository;
 import com.astrobookings.infrastructure.RepositoryFactory;
-import com.astrobookings.infrastructure.RocketRepository;
+import com.astrobookings.domain.ports.RocketRepository;
 import com.astrobookings.infrastructure.models.Flight;
 import com.sun.net.httpserver.HttpExchange;
 

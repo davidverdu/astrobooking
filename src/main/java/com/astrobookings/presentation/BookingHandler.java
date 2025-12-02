@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.astrobookings.domain.BookingService;
-import com.astrobookings.infrastructure.BookingRepository;
-import com.astrobookings.infrastructure.FlightRepository;
+import com.astrobookings.domain.ports.BookingRepository;
+import com.astrobookings.domain.ports.FlightRepository;
 import com.astrobookings.infrastructure.RepositoryFactory;
-import com.astrobookings.infrastructure.RocketRepository;
+import com.astrobookings.domain.ports.RocketRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.net.httpserver.HttpExchange;
 

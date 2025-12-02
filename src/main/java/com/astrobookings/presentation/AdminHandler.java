@@ -3,8 +3,8 @@ package com.astrobookings.presentation;
 import java.io.IOException;
 
 import com.astrobookings.domain.CancellationService;
-import com.astrobookings.infrastructure.BookingRepository;
-import com.astrobookings.infrastructure.FlightRepository;
+import com.astrobookings.domain.ports.BookingRepository;
+import com.astrobookings.domain.ports.FlightRepository;
 import com.astrobookings.infrastructure.RepositoryFactory;
 import com.sun.net.httpserver.HttpExchange;
 

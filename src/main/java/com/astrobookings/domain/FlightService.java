@@ -3,8 +3,8 @@ package com.astrobookings.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.astrobookings.infrastructure.FlightRepository;
-import com.astrobookings.infrastructure.RocketRepository;
+import com.astrobookings.domain.ports.FlightRepository;
+import com.astrobookings.domain.ports.RocketRepository;
 import com.astrobookings.infrastructure.models.Flight;
 import com.astrobookings.infrastructure.models.FlightStatus;
 
