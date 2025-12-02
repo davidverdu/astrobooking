@@ -12,7 +12,7 @@ public class RocketService {
         this.rocketRepository = rocketRepository;
     }
 
-    public List<Rocket> getRocketss() {
+    public List<Rocket> getRockets() {
         return rocketRepository.findAll();
     }
 
