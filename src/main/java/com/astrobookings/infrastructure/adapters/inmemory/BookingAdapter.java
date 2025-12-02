@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.astrobookings.domain.ports.BookingPort;
-import com.astrobookings.infrastructure.models.Booking;
+import com.astrobookings.domain.models.Booking;
 
 public class BookingAdapter implements BookingPort {
   private static final Map<String, Booking> bookings = new HashMap<>();

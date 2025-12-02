@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.astrobookings.domain.ports.RocketPort;
-import com.astrobookings.infrastructure.models.Rocket;
+import com.astrobookings.domain.models.Rocket;
 
 public class RocketAdapter implements RocketPort {
   private static final Map<String, Rocket> rockets = new HashMap<>();

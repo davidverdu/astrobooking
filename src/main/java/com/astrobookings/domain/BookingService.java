@@ -7,10 +7,10 @@ import java.util.List;
 import com.astrobookings.domain.ports.BookingPort;
 import com.astrobookings.domain.ports.FlightPort;
 import com.astrobookings.domain.ports.RocketPort;
-import com.astrobookings.infrastructure.models.Booking;
-import com.astrobookings.infrastructure.models.Flight;
-import com.astrobookings.infrastructure.models.FlightStatus;
-import com.astrobookings.infrastructure.models.Rocket;
+import com.astrobookings.domain.models.Booking;
+import com.astrobookings.domain.models.Flight;
+import com.astrobookings.domain.models.FlightStatus;
+import com.astrobookings.domain.models.Rocket;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BookingService {

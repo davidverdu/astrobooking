@@ -6,9 +6,9 @@ import java.util.List;
 
 import com.astrobookings.domain.ports.BookingPort;
 import com.astrobookings.domain.ports.FlightPort;
-import com.astrobookings.infrastructure.models.Booking;
-import com.astrobookings.infrastructure.models.Flight;
-import com.astrobookings.infrastructure.models.FlightStatus;
+import com.astrobookings.domain.models.Booking;
+import com.astrobookings.domain.models.Flight;
+import com.astrobookings.domain.models.FlightStatus;
 
 public class CancellationService {
   private final FlightPort flightRepository;

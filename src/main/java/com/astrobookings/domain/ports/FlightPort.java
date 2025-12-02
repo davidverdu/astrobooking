@@ -1,6 +1,6 @@
 package com.astrobookings.domain.ports;
 
-import com.astrobookings.infrastructure.models.Flight;
+import com.astrobookings.domain.models.Flight;
 
 import java.util.List;
 

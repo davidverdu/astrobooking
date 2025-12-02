@@ -1,6 +1,6 @@
 package com.astrobookings.domain.ports;
 
-import com.astrobookings.infrastructure.models.Rocket;
+import com.astrobookings.domain.models.Rocket;
 
 import java.util.List;
 

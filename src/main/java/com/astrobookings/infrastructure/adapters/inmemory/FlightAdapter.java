@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.astrobookings.domain.ports.FlightPort;
-import com.astrobookings.infrastructure.models.Flight;
-import com.astrobookings.infrastructure.models.FlightStatus;
+import com.astrobookings.domain.models.Flight;
+import com.astrobookings.domain.models.FlightStatus;
 
 public class FlightAdapter implements FlightPort {
   private static final Map<String, Flight> flights = new HashMap<>();

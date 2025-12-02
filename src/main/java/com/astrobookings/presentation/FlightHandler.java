@@ -11,7 +11,7 @@ import com.astrobookings.domain.FlightService;
 import com.astrobookings.domain.ports.FlightPort;
 import com.astrobookings.infrastructure.AdapterFactory;
 import com.astrobookings.domain.ports.RocketPort;
-import com.astrobookings.infrastructure.models.Flight;
+import com.astrobookings.domain.models.Flight;
 import com.sun.net.httpserver.HttpExchange;
 
 public class FlightHandler extends BaseHandler {

@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 
 import com.astrobookings.infrastructure.AdapterFactory;
 import com.astrobookings.domain.ports.RocketPort;
-import com.astrobookings.infrastructure.models.Rocket;
+import com.astrobookings.domain.models.Rocket;
 import com.sun.net.httpserver.HttpExchange;
 
 public class RocketHandler extends BaseHandler {
