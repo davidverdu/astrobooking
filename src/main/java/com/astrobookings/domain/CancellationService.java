@@ -4,17 +4,17 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import com.astrobookings.domain.ports.BookingPort;
-import com.astrobookings.domain.ports.FlightPort;
+import com.astrobookings.domain.ports.BookingRepository;
+import com.astrobookings.domain.ports.FlightRepository;
 import com.astrobookings.domain.models.Booking;
 import com.astrobookings.domain.models.Flight;
 import com.astrobookings.domain.models.FlightStatus;
 
 public class CancellationService {
-  private final FlightPort flightRepository;
-  private final BookingPort bookingRepository;
+  private final FlightRepository flightRepository;
+  private final BookingRepository bookingRepository;
 
-  public CancellationService(FlightPort flightRepository, BookingPort bookingRepository) {
+  public CancellationService(FlightRepository flightRepository, BookingRepository bookingRepository) {
     this.flightRepository = flightRepository;
     this.bookingRepository = bookingRepository;
   }

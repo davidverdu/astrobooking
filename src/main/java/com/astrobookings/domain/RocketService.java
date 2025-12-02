@@ -1,11 +1,11 @@
 package com.astrobookings.domain;
 
-import com.astrobookings.domain.ports.RocketPort;
+import com.astrobookings.domain.ports.RocketRepository;
 
 public class RocketService {
-    private final RocketPort rocketRepository;
+    private final RocketRepository rocketRepository;
 
-    public RocketService(RocketPort rocketRepository) {
+    public RocketService(RocketRepository rocketRepository) {
         this.rocketRepository = rocketRepository;
     }
 

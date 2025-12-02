@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.astrobookings.domain.ports.RocketPort;
+import com.astrobookings.domain.ports.RocketRepository;
 import com.astrobookings.domain.models.Rocket;
 
-public class RocketAdapter implements RocketPort {
+public class RocketRepositoryInMemory implements RocketRepository {
   private static final Map<String, Rocket> rockets = new HashMap<>();
   private static int nextId = 1;
 
