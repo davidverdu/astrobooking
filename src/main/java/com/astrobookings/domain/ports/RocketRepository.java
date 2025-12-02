@@ -1,6 +1,6 @@
-package com.astrobookings.persistence;
+package com.astrobookings.domain.ports;
 
-import com.astrobookings.persistence.models.Rocket;
+import com.astrobookings.domain.models.Rocket;
 
 import java.util.List;
 

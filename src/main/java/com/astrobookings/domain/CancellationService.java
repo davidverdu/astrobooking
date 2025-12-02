@@ -1,14 +1,14 @@
-package com.astrobookings.business;
+package com.astrobookings.domain;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import com.astrobookings.persistence.BookingRepository;
-import com.astrobookings.persistence.FlightRepository;
-import com.astrobookings.persistence.models.Booking;
-import com.astrobookings.persistence.models.Flight;
-import com.astrobookings.persistence.models.FlightStatus;
+import com.astrobookings.domain.ports.BookingRepository;
+import com.astrobookings.domain.ports.FlightRepository;
+import com.astrobookings.domain.models.Booking;
+import com.astrobookings.domain.models.Flight;
+import com.astrobookings.domain.models.FlightStatus;
 
 public class CancellationService {
   private final FlightRepository flightRepository;

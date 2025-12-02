@@ -7,19 +7,19 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.astrobookings.business.FlightService;
-import com.astrobookings.persistence.FlightRepository;
-import com.astrobookings.persistence.RepositoryFactory;
-import com.astrobookings.persistence.RocketRepository;
-import com.astrobookings.persistence.models.Flight;
+import com.astrobookings.domain.FlightService;
+import com.astrobookings.domain.ports.FlightRepository;
+import com.astrobookings.infrastructure.RepositoryFactory;
+import com.astrobookings.domain.ports.RocketRepository;
+import com.astrobookings.domain.models.Flight;
 import com.sun.net.httpserver.HttpExchange;
 
 public class FlightHandler extends BaseHandler {
   private final FlightService flightService;
 
   public FlightHandler() {
-    FlightRepository flightRepository = RepositoryFactory.createFlightRepository();
-    RocketRepository rocketRepository = RepositoryFactory.createRocketRepository();
+    FlightRepository flightRepository = RepositoryFactory.getFlightRepository();
+    RocketRepository rocketRepository = RepositoryFactory.getRocketRepository();
     this.flightService = new FlightService(flightRepository, rocketRepository);
   }
 

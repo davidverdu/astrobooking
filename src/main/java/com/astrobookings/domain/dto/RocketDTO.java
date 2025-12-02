@@ -1,4 +1,4 @@
-package com.astrobookings.presentation.dto;
+package com.astrobookings.domain.dto;
 
 public class RocketDTO {
     public String name;

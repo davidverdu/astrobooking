@@ -1,12 +1,12 @@
-package com.astrobookings.business;
+package com.astrobookings.domain;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.astrobookings.persistence.FlightRepository;
-import com.astrobookings.persistence.RocketRepository;
-import com.astrobookings.persistence.models.Flight;
-import com.astrobookings.persistence.models.FlightStatus;
+import com.astrobookings.domain.ports.FlightRepository;
+import com.astrobookings.domain.ports.RocketRepository;
+import com.astrobookings.domain.models.Flight;
+import com.astrobookings.domain.models.FlightStatus;
 
 public class FlightService {
   private final FlightRepository flightRepository;
