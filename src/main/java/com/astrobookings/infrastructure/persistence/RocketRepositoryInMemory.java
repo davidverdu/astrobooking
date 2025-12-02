@@ -1,4 +1,4 @@
-package com.astrobookings.infrastructure.adapters.inmemory;
+package com.astrobookings.infrastructure.persistence;
 
 import java.util.ArrayList;
 import java.util.HashMap;
