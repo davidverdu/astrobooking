@@ -1,4 +1,4 @@
-package com.astrobookings.infrastructure.implementation;
+package com.astrobookings.infrastructure.adapters.inmemory;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.astrobookings.domain.ports.FlightRepositoryPort;
+import com.astrobookings.domain.ports.FlightPort;
 import com.astrobookings.infrastructure.models.Flight;
 import com.astrobookings.infrastructure.models.FlightStatus;
 
-public class InMemoryFlightRepository implements FlightRepositoryPort {
+public class FlightAdapter implements FlightPort {
   private static final Map<String, Flight> flights = new HashMap<>();
   private static int nextId = 1;
 

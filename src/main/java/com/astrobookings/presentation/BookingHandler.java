@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.astrobookings.domain.BookingService;
-import com.astrobookings.domain.ports.BookingRepositoryPort;
-import com.astrobookings.domain.ports.FlightRepositoryPort;
-import com.astrobookings.infrastructure.RepositoryFactory;
-import com.astrobookings.domain.ports.RocketRepositoryPort;
+import com.astrobookings.domain.ports.BookingPort;
+import com.astrobookings.domain.ports.FlightPort;
+import com.astrobookings.infrastructure.AdapterFactory;
+import com.astrobookings.domain.ports.RocketPort;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.net.httpserver.HttpExchange;
 
@@ -19,9 +19,9 @@ public class BookingHandler extends BaseHandler {
   private final BookingService bookingService;
 
   public BookingHandler() {
-    BookingRepositoryPort bookingRepository = RepositoryFactory.createBookingRepository();
-    FlightRepositoryPort flightRepository = RepositoryFactory.createFlightRepository();
-    RocketRepositoryPort rocketRepository = RepositoryFactory.createRocketRepository();
+    BookingPort bookingRepository = AdapterFactory.getBookingAdapter();
+    FlightPort flightRepository = AdapterFactory.getFlightAdapter();
+    RocketPort rocketRepository = AdapterFactory.getRocketAdapter();
     this.bookingService = new BookingService(bookingRepository, flightRepository, rocketRepository);
   }
 

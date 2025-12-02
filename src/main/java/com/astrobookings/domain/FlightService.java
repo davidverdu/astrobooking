@@ -3,16 +3,16 @@ package com.astrobookings.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.astrobookings.domain.ports.FlightRepositoryPort;
-import com.astrobookings.domain.ports.RocketRepositoryPort;
+import com.astrobookings.domain.ports.FlightPort;
+import com.astrobookings.domain.ports.RocketPort;
 import com.astrobookings.infrastructure.models.Flight;
 import com.astrobookings.infrastructure.models.FlightStatus;
 
 public class FlightService {
-  private final FlightRepositoryPort flightRepository;
-  private final RocketRepositoryPort rocketRepository;
+  private final FlightPort flightRepository;
+  private final RocketPort rocketRepository;
 
-  public FlightService(FlightRepositoryPort flightRepository, RocketRepositoryPort rocketRepository) {
+  public FlightService(FlightPort flightRepository, RocketPort rocketRepository) {
     this.flightRepository = flightRepository;
     this.rocketRepository = rocketRepository;
   }

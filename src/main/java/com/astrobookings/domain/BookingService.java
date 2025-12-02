@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import com.astrobookings.domain.ports.BookingRepositoryPort;
-import com.astrobookings.domain.ports.FlightRepositoryPort;
-import com.astrobookings.domain.ports.RocketRepositoryPort;
+import com.astrobookings.domain.ports.BookingPort;
+import com.astrobookings.domain.ports.FlightPort;
+import com.astrobookings.domain.ports.RocketPort;
 import com.astrobookings.infrastructure.models.Booking;
 import com.astrobookings.infrastructure.models.Flight;
 import com.astrobookings.infrastructure.models.FlightStatus;
@@ -14,13 +14,13 @@ import com.astrobookings.infrastructure.models.Rocket;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BookingService {
-  private final BookingRepositoryPort bookingRepository;
-  private final FlightRepositoryPort flightRepository;
-  private final RocketRepositoryPort rocketRepository;
+  private final BookingPort bookingRepository;
+  private final FlightPort flightRepository;
+  private final RocketPort rocketRepository;
   private final ObjectMapper objectMapper = new ObjectMapper();
 
-  public BookingService(BookingRepositoryPort bookingRepository, FlightRepositoryPort flightRepository,
-                        RocketRepositoryPort rocketRepository) {
+  public BookingService(BookingPort bookingRepository, FlightPort flightRepository,
+                        RocketPort rocketRepository) {
     this.bookingRepository = bookingRepository;
     this.flightRepository = flightRepository;
     this.rocketRepository = rocketRepository;
