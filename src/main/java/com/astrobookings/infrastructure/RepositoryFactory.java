@@ -1,8 +1,8 @@
-package com.astrobookings.persistence;
+package com.astrobookings.infrastructure;
 
-import com.astrobookings.persistence.implementation.InMemoryBookingRepository;
-import com.astrobookings.persistence.implementation.InMemoryFlightRepository;
-import com.astrobookings.persistence.implementation.InMemoryRocketRepository;
+import com.astrobookings.infrastructure.implementation.InMemoryBookingRepository;
+import com.astrobookings.infrastructure.implementation.InMemoryFlightRepository;
+import com.astrobookings.infrastructure.implementation.InMemoryRocketRepository;
 
 public class RepositoryFactory {
     public static RocketRepository createRocketRepository() {

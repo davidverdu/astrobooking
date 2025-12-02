@@ -2,10 +2,10 @@ package com.astrobookings.presentation;
 
 import java.io.IOException;
 
-import com.astrobookings.business.CancellationService;
-import com.astrobookings.persistence.BookingRepository;
-import com.astrobookings.persistence.FlightRepository;
-import com.astrobookings.persistence.RepositoryFactory;
+import com.astrobookings.domain.CancellationService;
+import com.astrobookings.infrastructure.BookingRepository;
+import com.astrobookings.infrastructure.FlightRepository;
+import com.astrobookings.infrastructure.RepositoryFactory;
 import com.sun.net.httpserver.HttpExchange;
 
 public class AdminHandler extends BaseHandler {

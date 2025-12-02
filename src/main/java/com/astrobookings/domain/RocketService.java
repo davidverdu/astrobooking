@@ -1,6 +1,6 @@
-package com.astrobookings.business;
+package com.astrobookings.domain;
 
-import com.astrobookings.persistence.RocketRepository;
+import com.astrobookings.infrastructure.RocketRepository;
 
 public class RocketService {
     private final RocketRepository rocketRepository;

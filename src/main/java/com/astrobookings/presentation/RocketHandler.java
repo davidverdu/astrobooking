@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import com.astrobookings.persistence.RepositoryFactory;
-import com.astrobookings.persistence.RocketRepository;
-import com.astrobookings.persistence.models.Rocket;
+import com.astrobookings.infrastructure.RepositoryFactory;
+import com.astrobookings.infrastructure.RocketRepository;
+import com.astrobookings.infrastructure.models.Rocket;
 import com.sun.net.httpserver.HttpExchange;
 
 public class RocketHandler extends BaseHandler {
