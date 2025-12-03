@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface RocketRepository {
     List<Rocket> findAll();
+    Rocket findById(String id);
     Rocket save(Rocket rocket);
 }

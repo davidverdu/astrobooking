@@ -50,6 +50,10 @@ public class FlightRepositoryInMemory implements FlightRepository {
     }
   }
 
+  public Flight findById(String id) {
+        return flights.get(id);
+    }
+
   public Flight save(Flight flight) {
     if (flight.getId() == null) {
       flight.setId("f" + nextId++);

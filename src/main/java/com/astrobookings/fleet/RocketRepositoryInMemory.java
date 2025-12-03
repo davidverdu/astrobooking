@@ -24,6 +24,10 @@ public class RocketRepositoryInMemory implements RocketRepository {
     return new ArrayList<>(rockets.values());
   }
 
+  public Rocket findById(String id) {
+        return rockets.get(id);
+    }
+
   public Rocket save(Rocket rocket) {
     if (rocket.getId() == null) {
       rocket.setId("r" + nextId++);
