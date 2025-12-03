@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
+import com.astrobookings.domain.models.CreateRocketCommand;
 import com.astrobookings.domain.ports.input.RocketsUseCases;
 import com.astrobookings.domain.models.Rocket;
 import com.sun.net.httpserver.HttpExchange;
@@ -53,6 +54,7 @@ public class RocketHandler extends BaseHandler {
       InputStream is = exchange.getRequestBody();
       String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
       Rocket rocket = this.objectMapper.readValue(body, Rocket.class);
+      var createRocketCommand = new CreateRocketCommand(rocket.getName(), rocket.getCapacity(), rocket.getSpeed());
 
       // Business validations mixed with input validation
       String error = validateRocket(rocket);
@@ -60,7 +62,7 @@ public class RocketHandler extends BaseHandler {
         statusCode = 400;
         response = "{\"error\": \"" + error + "\"}";
       } else {
-        Rocket saved = rocketsUseCases.save(rocket);
+        Rocket saved = rocketsUseCases.saveRocket(createRocketCommand);
         statusCode = 201;
         response = this.objectMapper.writeValueAsString(saved);
       }

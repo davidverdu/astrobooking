@@ -3,6 +3,10 @@ package com.astrobookings;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
+import com.astrobookings.domain.RocketService;
+import com.astrobookings.domain.ports.input.RocketsUseCases;
+import com.astrobookings.domain.ports.output.RocketRepository;
+import com.astrobookings.infrastructure.persistence.RocketRepositoryInMemory;
 import com.astrobookings.infrastructure.presentation.AdminHandler;
 import com.astrobookings.infrastructure.presentation.BookingHandler;
 import com.astrobookings.infrastructure.presentation.FlightHandler;
@@ -13,9 +17,11 @@ public class AstroBookingsApp {
   public static void main(String[] args) throws IOException {
     // Create HTTP server on port 8080
     HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+    RocketRepository rocketRepository = new RocketRepositoryInMemory();
+    RocketsUseCases rocketsUseCases = new RocketService(rocketRepository);
 
     // Register handlers for endpoints
-    server.createContext("/rockets", new RocketHandler());
+    server.createContext("/rockets", new RocketHandler(rocketsUseCases));
     server.createContext("/flights", new FlightHandler());
     server.createContext("/bookings", new BookingHandler());
     server.createContext("/admin/cancel-flights", new AdminHandler());
