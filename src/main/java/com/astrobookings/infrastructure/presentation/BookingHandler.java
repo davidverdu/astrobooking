@@ -1,4 +1,4 @@
-package com.astrobookings.presentation;
+package com.astrobookings.infrastructure.presentation;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,20 +7,22 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.astrobookings.domain.FlightService;
-import com.astrobookings.domain.ports.FlightRepository;
+import com.astrobookings.domain.BookingService;
+import com.astrobookings.domain.ports.output.BookingRepository;
+import com.astrobookings.domain.ports.output.FlightRepository;
 import com.astrobookings.infrastructure.RepositoryFactory;
-import com.astrobookings.domain.ports.RocketRepository;
-import com.astrobookings.domain.models.Flight;
+import com.astrobookings.domain.ports.output.RocketRepository;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.sun.net.httpserver.HttpExchange;
 
-public class FlightHandler extends BaseHandler {
-  private final FlightService flightService;
+public class BookingHandler extends BaseHandler {
+  private final BookingService bookingService;
 
-  public FlightHandler() {
+  public BookingHandler() {
+    BookingRepository bookingRepository = RepositoryFactory.getBookingRepository();
     FlightRepository flightRepository = RepositoryFactory.getFlightRepository();
     RocketRepository rocketRepository = RepositoryFactory.getRocketRepository();
-    this.flightService = new FlightService(flightRepository, rocketRepository);
+    this.bookingService = new BookingService(bookingRepository, flightRepository, rocketRepository);
   }
 
   @Override
@@ -43,13 +45,15 @@ public class FlightHandler extends BaseHandler {
     try {
       URI uri = exchange.getRequestURI();
       String query = uri.getQuery();
-      String statusFilter = null;
+      String flightId = null;
+      String passengerName = null;
       if (query != null) {
         Map<String, String> params = this.parseQuery(query);
-        statusFilter = params.get("status");
+        flightId = params.get("flightId");
+        passengerName = params.get("passengerName");
       }
 
-      response = this.objectMapper.writeValueAsString(flightService.getFlights(statusFilter));
+      response = bookingService.getBookings(flightId, passengerName);
     } catch (Exception e) {
       statusCode = 500;
       response = "{\"error\": \"Internal server error\"}";
@@ -66,21 +70,39 @@ public class FlightHandler extends BaseHandler {
       // Parse JSON body
       InputStream is = exchange.getRequestBody();
       String body = new String(is.readAllBytes(), StandardCharsets.UTF_8);
-      Flight flight = this.objectMapper.readValue(body, Flight.class);
+      JsonNode jsonNode = this.objectMapper.readTree(body);
 
-      Flight saved = flightService.createFlight(flight);
-      response = this.objectMapper.writeValueAsString(saved);
+      String flightId = jsonNode.get("flightId").asText();
+      String passengerName = jsonNode.get("passengerName").asText();
+
+      // Basic validation in handler (mixing)
+      if (flightId == null || flightId.trim().isEmpty()) {
+        statusCode = 400;
+        response = "{\"error\": \"Flight ID must be provided\"}";
+      } else if (passengerName == null || passengerName.trim().isEmpty()) {
+        statusCode = 400;
+        response = "{\"error\": \"Passenger name must be provided\"}";
+      } else {
+        response = bookingService.createBooking(flightId, passengerName);
+      }
     } catch (IllegalArgumentException e) {
       String error = e.getMessage();
-      if (error.contains("does not exist")) {
+      if (error.contains("not found")) {
         statusCode = 404;
+      } else if (error.contains("not available")) {
+        statusCode = 400;
       } else {
         statusCode = 400;
       }
       response = "{\"error\": \"" + error + "\"}";
     } catch (Exception e) {
-      statusCode = 400;
-      response = "{\"error\": \"Invalid JSON or request\"}";
+      if (e.getMessage() != null && e.getMessage().contains("FAILED")) {
+        statusCode = 402;
+        response = "{\"error\": \"Payment required\"}";
+      } else {
+        statusCode = 400;
+        response = "{\"error\": \"Invalid JSON or request\"}";
+      }
     }
 
     sendResponse(exchange, statusCode, response);

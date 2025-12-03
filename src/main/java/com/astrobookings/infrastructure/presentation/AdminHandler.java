@@ -1,10 +1,10 @@
-package com.astrobookings.presentation;
+package com.astrobookings.infrastructure.presentation;
 
 import java.io.IOException;
 
 import com.astrobookings.domain.CancellationService;
-import com.astrobookings.domain.ports.BookingRepository;
-import com.astrobookings.domain.ports.FlightRepository;
+import com.astrobookings.domain.ports.output.BookingRepository;
+import com.astrobookings.domain.ports.output.FlightRepository;
 import com.astrobookings.infrastructure.RepositoryFactory;
 import com.sun.net.httpserver.HttpExchange;
 

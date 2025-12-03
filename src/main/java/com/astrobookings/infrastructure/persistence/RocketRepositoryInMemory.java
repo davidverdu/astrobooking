@@ -1,11 +1,11 @@
-package com.astrobookings.infrastructure.adapters.inmemory;
+package com.astrobookings.infrastructure.persistence;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.astrobookings.domain.ports.RocketRepository;
+import com.astrobookings.domain.ports.output.RocketRepository;
 import com.astrobookings.domain.models.Rocket;
 
 public class RocketRepositoryInMemory implements RocketRepository {
