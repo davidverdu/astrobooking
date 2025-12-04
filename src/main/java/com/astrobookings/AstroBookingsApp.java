@@ -3,14 +3,14 @@ package com.astrobookings;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
-import com.astrobookings.domain.RocketService;
-import com.astrobookings.domain.ports.input.RocketsUseCases;
-import com.astrobookings.domain.ports.output.RocketRepository;
-import com.astrobookings.infrastructure.persistence.RocketRepositoryInMemory;
-import com.astrobookings.infrastructure.presentation.AdminHandler;
-import com.astrobookings.infrastructure.presentation.BookingHandler;
-import com.astrobookings.infrastructure.presentation.FlightHandler;
-import com.astrobookings.infrastructure.presentation.RocketHandler;
+import com.astrobookings.fleet.domain.RocketService;
+import com.astrobookings.fleet.domain.ports.input.RocketsUseCases;
+import com.astrobookings.fleet.domain.ports.output.RocketRepository;
+import com.astrobookings.fleet.RocketRepositoryInMemory;
+import com.astrobookings.sales.infrastructure.presentation.AdminHandler;
+import com.astrobookings.sales.infrastructure.presentation.BookingHandler;
+import com.astrobookings.fleet.infrastructure.presentation.FlightHandler;
+import com.astrobookings.fleet.infrastructure.presentation.RocketHandler;
 import com.sun.net.httpserver.HttpServer;
 
 public class AstroBookingsApp {
