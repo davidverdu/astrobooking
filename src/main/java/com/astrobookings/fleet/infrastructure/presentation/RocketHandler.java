@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import com.astrobookings.fleet.domain.models.CreateRocketCommand;
+import com.astrobookings.fleet.domain.models.RocketCapacity;
 import com.astrobookings.fleet.domain.ports.input.RocketsUseCases;
 import com.astrobookings.fleet.domain.models.Rocket;
 import com.astrobookings.shared.infrastructure.presentation.BaseHandler;

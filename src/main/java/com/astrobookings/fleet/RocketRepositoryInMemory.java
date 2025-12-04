@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.astrobookings.fleet.domain.models.RocketCapacity;
 import com.astrobookings.fleet.domain.ports.output.RocketRepository;
 import com.astrobookings.fleet.domain.models.Rocket;
 
@@ -15,7 +16,13 @@ public class RocketRepositoryInMemory implements RocketRepository {
   static {
     // Pre-load one rocket
     var rocketId = "00000000-0000-0000-0000-000000000001";
-    Rocket falcon9 = new Rocket(rocketId, "Falcon 9", 7, 27000.0);
+    RocketCapacity capacity = null;
+    try {
+        capacity = new RocketCapacity(7);
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
+    Rocket falcon9 = new Rocket(rocketId, "Falcon 9", capacity, 27000.0);
     rockets.put(rocketId, falcon9);
     nextId = 2;
   }

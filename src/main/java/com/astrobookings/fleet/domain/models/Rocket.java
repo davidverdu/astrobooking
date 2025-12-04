@@ -3,18 +3,24 @@ package com.astrobookings.fleet.domain.models;
 public class Rocket {
   private String id;
   private String name;
-  private int capacity;
+  private RocketCapacity capacity;
   private Double speed;
 
   public Rocket() {
   }
 
-  public Rocket(String id, String name, int capacity, Double speed) {
+  public Rocket(String id, String name, RocketCapacity capacity, Double speed) {
     this.id = id;
     this.name = name;
     this.capacity = capacity;
     this.speed = speed;
   }
+
+    public Rocket(String name, RocketCapacity capacity, Double speed) {
+        this.name = name;
+        this.capacity = capacity;
+        this.speed = speed;
+    }
 
   public String getId() {
     return id;
@@ -33,11 +39,7 @@ public class Rocket {
   }
 
   public int getCapacity() {
-    return capacity;
-  }
-
-  public void setCapacity(int capacity) {
-    this.capacity = capacity;
+    return capacity.getValue();
   }
 
   public Double getSpeed() {

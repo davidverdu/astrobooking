@@ -2,6 +2,7 @@ package com.astrobookings.fleet.domain;
 
 import java.util.List;
 
+import com.astrobookings.fleet.domain.models.RocketCapacity;
 import com.astrobookings.shared.domain.models.BusinessErrorCode;
 import com.astrobookings.shared.domain.models.BusinessException;
 import com.astrobookings.fleet.domain.models.CreateRocketCommand;
@@ -21,18 +22,8 @@ public class RocketService implements RocketsUseCases {
     }
 
     public Rocket saveRocket(CreateRocketCommand command) {
-        validate(command);
-
-        Rocket rocket = new Rocket();
-        rocket.setName(command.name());
-        rocket.setCapacity(command.capacity());
-        rocket.setSpeed(command.maxSpeed());
+        var capacity = new RocketCapacity(command.capacity());
+        Rocket rocket = new Rocket(command.name(), capacity, command.maxSpeed() );
         return rocketRepository.save(rocket);
-    }
-
-    private void validate(CreateRocketCommand command) {
-        if (command.capacity() <= 0 || command.capacity() > 10) {
-            throw new BusinessException(BusinessErrorCode.VALIDATION, "Rocket capacity must be between 1 and 10");
-        }
     }
 }
